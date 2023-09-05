@@ -50,4 +50,19 @@ public class StudentDAO implements IStudentDAO {
     public void update(Student student) {
         entityManager.merge(student);
     }
+
+    @Override
+    @Transactional
+    public void delete(Integer id) {
+        // retrieve the student
+        Student student = this.entityManager.find(Student.class, id);
+        // delete the student
+        this.entityManager.remove(student);
+    }
+
+    @Override
+    @Transactional
+    public int deleteAll() {
+        return entityManager.createQuery("DELETE FROM Student").executeUpdate();
+    }
 }

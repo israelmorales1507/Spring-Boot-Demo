@@ -15,7 +15,7 @@ public class CrudedemoApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(CrudedemoApplication.class, args);
 	}
- @Reques
+
 	@Bean
 	public CommandLineRunner commandLineRunner(StudentDAO studentDAO) {
 		return runner -> {
@@ -23,8 +23,21 @@ public class CrudedemoApplication {
 			// readStudent(studentDAO);
 			// queryForStudents(studentDAO);
 			// queryForStudentsLastName(studentDAO);
-			updateStudent(studentDAO);
+			// updateStudent(studentDAO);
+			// deleteStudent(studentDAO);
+			deleteAllStudents(studentDAO);
 		};
+	}
+
+	private void deleteAllStudents(StudentDAO studentDAO) {
+		System.out.println("Deleting all students...");
+		System.out.println("Deleted row count: "+studentDAO.deleteAll());
+	}
+
+	private void deleteStudent(StudentDAO studentDAO) {
+		int studentId = 3;
+		System.out.println("Deleting student id: "+studentId);
+		studentDAO.delete(studentId);
 	}
 
 	private void updateStudent(StudentDAO studentDAO) {
