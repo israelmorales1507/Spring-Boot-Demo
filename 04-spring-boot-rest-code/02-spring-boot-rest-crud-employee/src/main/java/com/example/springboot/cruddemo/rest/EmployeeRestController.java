@@ -26,11 +26,30 @@ public class EmployeeRestController {
 
     @GetMapping("/employees/{id}")
     public Employee findById(@PathVariable int id) {
-        return this.employeeService.findById(id);
+        var result = this.employeeService.findById(id);
+        if (result == null) {
+            throw new RuntimeException("Employee id:"+id+" not found.");
+        }
+        return result;
     }
 
     @PostMapping("/employees")
-    public Employee findById(@RequestBody Employee employee) {
+    public Employee saveEmployee(@RequestBody Employee employee) {
         return this.employeeService.save(employee);
+    }
+
+    @PutMapping("/employees")
+    public Employee UpdateEmployee(@RequestBody Employee employee) {
+        return this.employeeService.save(employee);
+    }
+
+    @DeleteMapping("/employees/{id}")
+    public String deleteEmployee(@PathVariable int id){
+        var employee = this.employeeService.findById(id);
+        if (employee == null) {
+            throw new RuntimeException("Employee id:"+id+"not found.");
+        }
+        this.employeeService.deleteById(id);
+        return "Deleted Employee id: " +id;
     }
 }
