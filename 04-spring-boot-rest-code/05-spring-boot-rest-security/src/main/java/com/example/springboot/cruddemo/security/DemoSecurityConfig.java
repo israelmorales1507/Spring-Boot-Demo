@@ -16,8 +16,12 @@ import javax.sql.DataSource;
 public class DemoSecurityConfig {
     @Bean
     public UserDetailsManager userDetailsManager(DataSource dataSource) {
-        return new JdbcUserDetailsManager(dataSource);
+        JdbcUserDetailsManager jdbcuserDetailsManager = new JdbcUserDetailsManager(dataSource);
+        jdbcuserDetailsManager.setUsersByUsernameQuery("SELECT user_id, pw, active FROM members where user_id=?");
+        jdbcuserDetailsManager.setAuthoritiesByUsernameQuery("SELECT user_id, role FROM roles where user_id=?");
+        return jdbcuserDetailsManager;
     }
+    
 /*
     @Bean
     public InMemoryUserDetailsManager userDetailsManager() {
