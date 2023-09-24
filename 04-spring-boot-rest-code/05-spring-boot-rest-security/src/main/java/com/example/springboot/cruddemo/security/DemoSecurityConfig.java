@@ -21,7 +21,7 @@ public class DemoSecurityConfig {
         jdbcuserDetailsManager.setAuthoritiesByUsernameQuery("SELECT user_id, role FROM roles where user_id=?");
         return jdbcuserDetailsManager;
     }
-    
+
 /*
     @Bean
     public InMemoryUserDetailsManager userDetailsManager() {
