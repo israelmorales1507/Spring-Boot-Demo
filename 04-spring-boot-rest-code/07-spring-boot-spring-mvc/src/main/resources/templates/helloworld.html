@@ -1,10 +1,11 @@
 <!doctype html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Document</title>
-    <link rel="stylesheet" th:href="@{/css/demo.css}">
+    <title>Thymeleaf</title>
 </head>
 <body>
-    <p th:text="'Time on the server is ' + ${theDate}" class="funny"/>
+    Hello world of Spring!<br/><br/>
+    Studen Name: <span th:text="${param.studentName}" /><br/><br/>
+    Studen Name: <span th:text="${message}" />
 </body>
 </html>
