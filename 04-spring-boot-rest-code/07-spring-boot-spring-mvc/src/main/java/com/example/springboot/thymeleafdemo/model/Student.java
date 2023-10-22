@@ -1,5 +1,7 @@
 package com.example.springboot.thymeleafdemo.model;
 
+import java.util.List;
+
 public class Student {
 
     private String firstName;
@@ -10,15 +12,26 @@ public class Student {
 
     private String favoriteLanguage;
 
+    private List<String> favoriteSystems;
+
     public Student(){
 
     }
 
-    public Student(String firstName, String lastName, String country, String favoriteLanguage) {
+    public Student(String firstName, String lastName, String country, String favoriteLanguage, List<String> favoriteSystems) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.country = country;
         this.favoriteLanguage = favoriteLanguage;
+        this.favoriteSystems = favoriteSystems;
+    }
+
+    public List<String> getFavoriteSystems() {
+        return favoriteSystems;
+    }
+
+    public void setFavoriteSystems(List<String> favoriteSystems) {
+        this.favoriteSystems = favoriteSystems;
     }
 
     public String getFavoriteLanguage() {
