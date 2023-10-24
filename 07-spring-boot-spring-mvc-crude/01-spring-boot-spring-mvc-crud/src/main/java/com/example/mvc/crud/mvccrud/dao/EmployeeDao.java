@@ -21,7 +21,7 @@ public class EmployeeDao implements IEmployeeDao {
 
     @Override
     public List<Employee> findAll() {
-        TypedQuery<Employee> query = this.entityManager.createQuery("from Employee", Employee.class);
+        TypedQuery<Employee> query = this.entityManager.createQuery("from Employee order by LastName", Employee.class);
         return query.getResultList();
     }
 
