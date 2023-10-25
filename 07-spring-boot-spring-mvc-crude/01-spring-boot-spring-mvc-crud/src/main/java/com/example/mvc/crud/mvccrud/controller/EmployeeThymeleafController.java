@@ -41,4 +41,10 @@ public class EmployeeThymeleafController {
         model.addAttribute("employee", this.employeeService.findById(id));
         return "Employees/EmployeeForm";
     }
+
+    @GetMapping("/delete")
+    public String deleteEmployee(@RequestParam("employeeId") int id){
+        this.employeeService.delete(id);
+        return "redirect:/employees/";
+    }
 }
